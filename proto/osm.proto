@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+option go_package = "github.com/aicdev/osm_poly_harvester/osm";
+
+package osm;
+
+// Nominatim 
+message Nominatim {
+    string type = 1;
+    NominatimProperties properties = 2;
+    NominatimBbox bbox = 3;
+    repeated NominatimGeometry geometry = 4;
+}
+
+message NominatimProperties {
+    int64 placeId = 1;
+    int32 osmId = 2;
+    string displayName = 3;
+    int32 placeRank = 4;
+    string category = 5;
+    string type = 6;
+    string osmType = 7;
+
+}
+
+message NominatimBbox {
+    repeated float entry = 1;
+}
+
+message NominatimGeometry {
+    string type = 1;
+    repeated NominatimCoordinates coordinates = 2;
+}
+
+message NominatimCoordinates {
+    float lat = 1;
+    float lon = 2;
+}
